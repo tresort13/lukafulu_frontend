@@ -11,6 +11,7 @@ export default function Home({navigation}) {
 
   const [showModal, setShowModal] = useState(false);
 
+
   const pressHandler = ()=>
   {
     navigation.navigate('EnvoiDecharge')
@@ -35,7 +36,7 @@ export default function Home({navigation}) {
               </View>      
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={ setShowModal(true) }>
+          <TouchableOpacity onPress={() => {  setShowModal(true); }}>
             <View style={styles.menuDesign2}>
             <AntDesign name="star" size={50} color="black" />
               <Text style={styles.textMenu}>Points Gagnés</Text> 
@@ -46,14 +47,14 @@ export default function Home({navigation}) {
 
 
        <View style={styles.containerPrincipale}>
-          <TouchableOpacity onPress={ setShowModal(true) }>
+          <TouchableOpacity onPress={() => {  setShowModal(true); }}>
              <View style={styles.menuDesign2}>
              <Foundation name="torso-business" size={70} color="black" />
               <Text style={styles.textMenu}>Mon Profil</Text> 
              </View>     
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={ setShowModal(true) }>
+          <TouchableOpacity onPress={() => {  setShowModal(true); }}>
             <View style={styles.menuDesign}>
             <FontAwesome name="history" size={50} color="white" />
               <Text style={styles.textMenu2}>Historique</Text> 
@@ -61,9 +62,7 @@ export default function Home({navigation}) {
           </TouchableOpacity>
         </View>  
     </View>
-
-  </ImageBackground>
-   <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+    <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
    <Modal.Content maxWidth="400px">
    <Modal.Header>Désolé Option Indisponible </Modal.Header>
      <Modal.Body>     
@@ -71,13 +70,15 @@ export default function Home({navigation}) {
      </Modal.Body>
      <Modal.Footer>
        <View style={styles.buttonModal}>
-         <Button variant="secondary" colorScheme="blueGray" onPress={() => {  setShowModal(false); }}>
+         <Button colorScheme={"primary"} size={"lg"} onPress={() => {  setShowModal(false); }}>
           Ok
          </Button>
        </View>
      </Modal.Footer>
    </Modal.Content>
 </Modal>
+  </ImageBackground>
+  
 </NativeBaseProvider>
     
   );
