@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ImageBackground,FlatList, Text, View,TouchableOpacity } from 'react-native';
-import { Button} from "@rneui/themed";
 import {NativeBaseProvider,Modal,Button} from "native-base";
 import Header from '../shared/Header';
 import { FontAwesome,AntDesign,Foundation } from '@expo/vector-icons'; 

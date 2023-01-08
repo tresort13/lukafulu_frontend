@@ -135,20 +135,7 @@ return (
           <View style={styles.titleContainer}>
              <Text style={styles.title}>SIGNALER UNE DECHARGE (FULU) </Text>
            </View>
-           <TextInput
-           multiline
-           style={styles.inputText}
-           onChangeText={props.handleChange('localisation_decharge')}
-           value={props.values.localisation_decharge}
-           placeholder='localisation de la décharge'
-           placeholderTextColor={'gray'}
-           onBlur={props.handleBlur('localisation_decharge')} 
-           focusable={true}/>
-         <Text style={styles.errorText}>{props.touched.localisation_decharge && props.errors.localisation_decharge}</Text>
-        <Divider my="2" _light={{
-           bg: "muted.800" }} 
-           _dark={{bg: "muted.50"}} 
-           />
+           
         <Select 
         style={styles.selectBox}
         selectedValue={props.values.description_decharge} minWidth="200"  accessibilityLabel="Choose Service"  placeholder="Description de la décharge" 
@@ -241,6 +228,20 @@ return (
            />
            
             <Divider my="2" _light={{
+           bg: "muted.800" }} 
+           _dark={{bg: "muted.50"}} 
+           />
+           <TextInput
+           multiline
+           style={styles.inputText}
+           onChangeText={props.handleChange('localisation_decharge')}
+           value={props.values.localisation_decharge}
+           placeholder='localisation de la décharge'
+           placeholderTextColor={'gray'}
+           onBlur={props.handleBlur('localisation_decharge')} 
+           focusable={true}/>
+         <Text style={styles.errorText}>{props.touched.localisation_decharge && props.errors.localisation_decharge}</Text>
+        <Divider my="2" _light={{
            bg: "muted.800" }} 
            _dark={{bg: "muted.50"}} 
            />
