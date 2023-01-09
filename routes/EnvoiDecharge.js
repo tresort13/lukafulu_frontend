@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React,{useState,useEffect,useRef} from 'react';
+import React,{useState} from 'react';
 import {KeyboardAvoidingView,SafeAreaView, StyleSheet,Keyboard,ImageBackground, ScrollView,Text, View,TextInput ,TouchableWithoutFeedback,TouchableOpacity,Image, Platform} from 'react-native';
 import Header from '../shared/Header';
 import {Formik} from 'formik';
@@ -180,7 +180,7 @@ return (
         bg: "teal.600",
         endIcon: <CheckIcon size="5" />
            }} mt={1} onValueChange={props.handleChange('dechet_observer')}>
-          <Select.Item label="M.P (Matière)" value="M.P (Matière)" />
+          <Select.Item label="M.P (Matière Plastique)" value="M.P (Matière Plastique)" />
           <Select.Item label="M.O (Matière Organique)" value="M.O (Matière Organique)" />
           <Select.Item label="Divers" value="Divers" />
           </Select>
