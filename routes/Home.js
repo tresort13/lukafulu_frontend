@@ -66,7 +66,7 @@ export default function Home({navigation}) {
    <Modal.Content maxWidth="400px">
    <Modal.Header>Désolé Option Indisponible </Modal.Header>
      <Modal.Body>     
-     Cette option n'est pas disponible dans cette version LUKAFULU-1.0  
+     Cette option n'est pas encore disponible dans cette version LUKAFULU-1.0  
      </Modal.Body>
      <Modal.Footer>
        <View style={styles.buttonModal}>
