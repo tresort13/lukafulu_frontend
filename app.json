@@ -20,6 +20,12 @@
           "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
           "isAccessMediaLocationEnabled": "true"
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Permettre $(PRODUCT_NAME) d'acceder à la localisation de la décharge"
+        }
       ]
     ],
     "updates": {

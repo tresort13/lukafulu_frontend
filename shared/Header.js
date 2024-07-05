@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { StyleSheet,Image, Text, View,TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'; 
-import {NativeBaseProvider,Divider,Modal,Spinner,Button} from "native-base";
+import {Modal,Button} from "@gluestack-ui/themed-native-base";
 import { useNavigation } from '@react-navigation/native';
 
 

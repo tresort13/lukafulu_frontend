@@ -1,7 +1,5 @@
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import DrawerNavigator from './routes/DrawerNavigator';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import HomeStackNavigator from './routes/HomeStackNavigator';
 /* some old imports
 import { StyleSheet,AppState,EventEmitter } from 'react-native';
@@ -24,7 +22,7 @@ export default function App() {
   return (
    
       <NavigationContainer>
-          <HomeStackNavigator/>
+        <HomeStackNavigator/>
       </NavigationContainer>
 
   )

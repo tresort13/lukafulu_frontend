@@ -1,9 +1,10 @@
+import { NativeBaseProvider } from "@gluestack-ui/themed-native-base";
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
 import {KeyboardAvoidingView,SafeAreaView, StyleSheet,Keyboard,ImageBackground, ScrollView,Text, View,TextInput ,TouchableWithoutFeedback,TouchableOpacity,Image, Platform} from 'react-native';
 import Header from '../shared/Header';
 import {Formik} from 'formik';
-import {NativeBaseProvider, Select ,CheckIcon,Divider,Modal,Spinner,Button,Checkbox} from "native-base";
+import { Select ,CheckIcon,Divider,Modal,Spinner,Button,Checkbox} from "@gluestack-ui/themed-native-base";
 import { MaterialIcons,FontAwesome,Ionicons,AntDesign  } from '@expo/vector-icons'; 
 import * as yup from 'yup';
 
@@ -12,13 +13,14 @@ import * as yup from 'yup';
 
 const testValidation = yup.object({
    
-   description_decharge: yup.array().required('champs obligatoire'),
-    dimensions_decharge: yup.string().required('champs obligatoire'),
-    dechet_observer: yup.array().required('champs obligatoire'),
-    nuisances_observer: yup.array().required('champs obligatoire'),
-    description_situation: yup.array().required('champs obligatoire'),
-    localisation_decharge: yup.string().required('champs obligatoire'),
-    observation: yup.string().required('champs obligatoire')
+  description_decharge: yup.array().required('champs obligatoire'),
+  dimensions_decharge: yup.string().required('champs obligatoire'),
+  dechet_observer: yup.array().required('champs obligatoire'),
+  nuisances_observer: yup.array().required('champs obligatoire'),
+  description_situation: yup.array().required('champs obligatoire'),
+  localisation_decharge: yup.string().required('champs obligatoire'),
+  observation: yup.string().required('champs obligatoire')
+
 });
 
 
@@ -65,8 +67,10 @@ const submitForm = (values,actions)=>
   uploadData.append('heading',values.location.coords.heading)
   uploadData.append('speed',values.location.coords.speed)
   uploadData.append('timestamp',values.location.timestamp)
+console.log(values.photo)
+  console.log(values.description_decharge)
 console.log(uploadData)
-   fetch('https://lukafulu-api.herokuapp.com/api/dechargesInformationsEnvoi/', {
+   fetch('https://lukafulu-api-cbdf8c8405a2.herokuapp.com/api/dechargesInformationsEnvoi/', {
           method:'POST',
           headers: {'Content-Type': 'multipart/form-data'},
           body: uploadData
@@ -76,8 +80,10 @@ console.log(uploadData)
             res => { 
               setShowModal2(false) 
               setShowModal(true) 
-              navigation.navigate('EnvoiDecharge')
-              actions.resetForm()
+             // actions.resetForm()
+              navigation.navigate('Home')
+               //navigation.navigate('EnvoiDecharge')
+             // actions.resetForm()
               console.log("envoi reussi") 
               console.log(res)
             }
@@ -109,22 +115,22 @@ return (
     <Header />
      <Formik
      initialValues = {{
-       localisation_decharge :'',
+      localisation_decharge :'',
        description_decharge:[],
        dimensions_decharge:'',
        dechet_observer:[],
        nuisances_observer:[],
        description_situation:[],
        observation:''
-
       }}
       validationSchema={testValidation}
      onSubmit={(values,actions)=>
     {
+      setShowModal2(true)
       values.photo = photo.uri
       values.location = location
       submitForm(values,actions)
-      setShowModal2(true)
+      
      // actions.resetForm()
       //navigation.navigate('EnvoiDecharge')
      
@@ -162,7 +168,7 @@ return (
           style={styles.inputText}
           placeholder='Description de la décharge'
           placeholderTextColor={'gray'}
-          value={props.values.description_decharge.join(' ')}
+         value={props.values.description_decharge.join(' ')}
         />
 
 
@@ -175,7 +181,7 @@ return (
           <Modal.Body>     
           <Checkbox.Group   onChange={(values)=>{
   props.setFieldValue('description_decharge',values,true);
-}}  accessibilityLabel="choose numbers" value={props.values.description_decharge}>
+}}  accessibilityLabel="Veuillez selectionner" value={props.values.description_decharge}>
            <Checkbox  value="Active" my={2}>
            Active
            </Checkbox>
@@ -246,7 +252,7 @@ return (
           <Modal.Body>     
           <Checkbox.Group   onChange={(values)=>{
   props.setFieldValue('dechet_observer',values,true);
-}}  accessibilityLabel="choose numbers" value={props.values.dechet_observer}>
+}}  accessibilityLabel="Veuillez selectionner" value={props.values.dechet_observer}>
            <Checkbox  value="M.P (Matière Plastique)" my={2}>
            M.P (Matière Plastique)
            </Checkbox>
@@ -279,7 +285,7 @@ return (
           style={styles.inputText}
           placeholder='Nuisances Observées'
           placeholderTextColor={'gray'}
-          value={props.values.nuisances_observer.join(' ')}
+         value={props.values.nuisances_observer.join(' ')}
         />
 
 
@@ -292,7 +298,7 @@ return (
           <Modal.Body>     
           <Checkbox.Group   onChange={(values)=>{
   props.setFieldValue('nuisances_observer',values,true);
-}}  accessibilityLabel="choose numbers" value={props.values.nuisances_observer}>
+}}  accessibilityLabel="Veuillez selectionner" value={props.values.nuisances_observer}>
            <Checkbox  value="Odeurs" my={2}>
            Odeurs
            </Checkbox>
@@ -340,7 +346,7 @@ return (
           <Modal.Body>     
           <Checkbox.Group   onChange={(values)=>{
   props.setFieldValue('description_situation',values,true);
-}}  accessibilityLabel="choose numbers" value={props.values.description_situation}>
+}}  accessibilityLabel="Veuillez selectionner" value={props.values.description_situation}>
            <Checkbox  value="Bord de la route" my={2}>
            Bord de la route
            </Checkbox>
