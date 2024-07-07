@@ -1,19 +1,28 @@
 import { NativeBaseProvider } from "@gluestack-ui/themed-native-base";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,ImageBackground,FlatList, View,TouchableOpacity ,Text} from 'react-native';
 import {Button,Modal } from "@gluestack-ui/themed-native-base";
 import Header from '../shared/Header';
-import { FontAwesome,AntDesign,Foundation } from '@expo/vector-icons'; 
+import { MaterialIcons,FontAwesome,Ionicons,AntDesign ,Foundation } from '@expo/vector-icons'; 
 
 
 
 
-export default function Home({navigation}) {
+export default function Home({route,navigation}) {
 
   const [showModal, setShowModal] = useState(false);
+  const [showModal3, setShowModal3] = useState(false);
+  var response = route.params.message
 
+  useEffect(()=>{
+    if(response==="successfull")
+    setShowModal3(true)
+  },[response]) ;
 
+ 
+
+console.log(route.params.message)
   const pressHandler = ()=>
   {
     navigation.navigate('EnvoiDecharge')
@@ -78,6 +87,23 @@ ok
      </Modal.Footer>
    </Modal.Content>
 </Modal>
+
+<Modal  isOpen={showModal3} onClose={() => setShowModal3(false)}>
+        <Modal.Content maxWidth="400px">
+        <Modal.Header>Envoi Réussi.</Modal.Header>
+          <Modal.Body>     
+          <FontAwesome name="check-circle-o" size={100} color="green" />
+          </Modal.Body>
+          <Modal.Footer>
+            <View style={styles.buttonModal}>
+            <Button colorScheme={"danger"} size={"lg"} onPress={() => {  setShowModal3(false); }}>
+                Fermer
+           </Button> 
+            </View>
+          </Modal.Footer>
+        </Modal.Content>
+    </Modal>
+
   </ImageBackground>
   </NativeBaseProvider>
   

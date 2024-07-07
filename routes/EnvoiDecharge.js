@@ -1,6 +1,6 @@
 import { NativeBaseProvider } from "@gluestack-ui/themed-native-base";
 import { StatusBar } from 'expo-status-bar';
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {KeyboardAvoidingView,SafeAreaView, StyleSheet,Keyboard,ImageBackground, ScrollView,Text, View,TextInput ,TouchableWithoutFeedback,TouchableOpacity,Image, Platform} from 'react-native';
 import Header from '../shared/Header';
 import {Formik} from 'formik';
@@ -39,10 +39,12 @@ const [showModal3, setShowModal3] = useState(false);
 const [showModal4, setShowModal4] = useState(false);
 const [showModal5, setShowModal5] = useState(false);
 const [showModal6, setShowModal6] = useState(false);
+var message =""
 
 
 const photo = route.params.photo
 const location= route.params.location
+
 
 const submitForm = (values,actions)=>
 {
@@ -80,9 +82,8 @@ console.log(uploadData)
             res => { 
               setShowModal2(false) 
               setShowModal(true) 
-             // actions.resetForm()
-              navigation.navigate('Home')
-               //navigation.navigate('EnvoiDecharge')
+
+               navigation.navigate('Home',{message :"successfull"})
              // actions.resetForm()
               console.log("envoi reussi") 
               console.log(res)
@@ -418,7 +419,7 @@ return (
            <TouchableOpacity style={styles.nouvellePhoto} onPress={openCamera}>
            <View style={styles.nouvellePhoto}>
            <MaterialIcons name="camera-alt" size={70} color="black" />
-           <Text style={styles.textMenu}>Prendre une nouvelle photo</Text>
+           <Text style={styles.textMenu}>Reprendre une nouvelle photo</Text>
            </View>
            </TouchableOpacity>
           </View>
